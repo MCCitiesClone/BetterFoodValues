@@ -1,0 +1,270 @@
+# ========================================
+# Better Food Values Configuration
+# ========================================
+# 
+# This file allows you to customize the nutritional values of all food items in Minecraft.
+# 
+# Configuration Format:
+# food_item_name:
+#   food: <integer>        # Hunger points restored (0-20)
+#   saturation: <float>    # Saturation points added
+#   damage: <float>        # Damage dealt when consumed (0 = no damage)
+#
+# Notes:
+# - Use the exact Minecraft material name (lowercase, underscores for spaces)
+# - Food values are capped at 20 (full hunger bar)
+# - Saturation values are also capped at 20
+# - Damage is in half-hearts (1.0 = half heart, 2.0 = full heart)
+# - Reload config with: /bfvreload
+#
+# ========================================
+
+# ========================================
+# FRUITS
+# ========================================
+
+apple:
+  food: 4
+  saturation: 2.4
+  damage: 0
+
+melon_slice:
+  food: 2
+  saturation: 1.2
+  damage: 0
+
+sweet_berries:
+  food: 2
+  saturation: 0.4
+  damage: 0
+
+glow_berries:
+  food: 2
+  saturation: 0.4
+  damage: 0
+
+chorus_fruit:
+  food: 4
+  saturation: 2.4
+  damage: 0
+
+# ========================================
+# VEGETABLES
+# ========================================
+
+carrot:
+  food: 3
+  saturation: 3.6
+  damage: 0
+
+potato:
+  food: 1
+  saturation: 0.6
+  damage: 0
+
+baked_potato:
+  food: 5
+  saturation: 6.0
+  damage: 0
+
+beetroot:
+  food: 1
+  saturation: 1.2
+  damage: 0
+
+poisonous_potato:
+  food: 2
+  saturation: 1.2
+  damage: 0
+
+# ========================================
+# GRAINS & BREAD
+# ========================================
+
+bread:
+  food: 5
+  saturation: 6.0
+  damage: 0
+
+cookie:
+  food: 2
+  saturation: 0.4
+  damage: 0
+
+cake:
+  food: 2
+  saturation: 0.4
+  damage: 0
+
+pumpkin_pie:
+  food: 8
+  saturation: 4.8
+  damage: 0
+
+# ========================================
+# RAW MEAT
+# ========================================
+
+beef:
+  food: 3
+  saturation: 1.8
+  damage: 0
+
+porkchop:
+  food: 3
+  saturation: 1.8
+  damage: 0
+
+chicken:
+  food: 2
+  saturation: 1.2
+  damage: 0
+
+mutton:
+  food: 2
+  saturation: 1.2
+  damage: 0
+
+rabbit:
+  food: 3
+  saturation: 1.8
+  damage: 0
+
+# ========================================
+# COOKED MEAT
+# ========================================
+
+cooked_beef:
+  food: 8
+  saturation: 12.8
+  damage: 0
+
+cooked_porkchop:
+  food: 8
+  saturation: 12.8
+  damage: 0
+
+cooked_chicken:
+  food: 6
+  saturation: 7.2
+  damage: 0
+
+cooked_mutton:
+  food: 6
+  saturation: 9.6
+  damage: 0
+
+cooked_rabbit:
+  food: 5
+  saturation: 6.0
+  damage: 0
+
+# ========================================
+# FISH
+# ========================================
+
+cod:
+  food: 2
+  saturation: 0.4
+  damage: 0
+
+salmon:
+  food: 2
+  saturation: 0.4
+  damage: 0
+
+tropical_fish:
+  food: 1
+  saturation: 0.2
+  damage: 0
+
+pufferfish:
+  food: 1
+  saturation: 0.2
+  damage: 2.0
+
+cooked_cod:
+  food: 5
+  saturation: 6.0
+  damage: 0
+
+cooked_salmon:
+  food: 6
+  saturation: 9.6
+  damage: 0
+
+# ========================================
+# SOUPS & STEWS
+# ========================================
+
+mushroom_stew:
+  food: 6
+  saturation: 7.2
+  damage: 0
+
+beetroot_soup:
+  food: 6
+  saturation: 7.2
+  damage: 0
+
+rabbit_stew:
+  food: 10
+  saturation: 12.0
+  damage: 0
+
+suspicious_stew:
+  food: 6
+  saturation: 7.2
+  damage: 0
+
+# ========================================
+# GOLDEN FOODS
+# ========================================
+
+golden_apple:
+  food: 4
+  saturation: 9.6
+  damage: 0
+
+enchanted_golden_apple:
+  food: 4
+  saturation: 9.6
+  damage: 0
+
+golden_carrot:
+  food: 6
+  saturation: 14.4
+  damage: 0
+
+# ========================================
+# SPECIAL FOODS
+# ========================================
+
+honey_bottle:
+  food: 6
+  saturation: 1.2
+  damage: 0
+
+dried_kelp:
+  food: 1
+  saturation: 0.6
+  damage: 0
+
+spider_eye:
+  food: 2
+  saturation: 3.2
+  damage: 0
+
+rotten_flesh:
+  food: 4
+  saturation: 0.8
+  damage: 0
+
+# ========================================
+# CAKE SLICES 
+# ========================================
+# Note: Cake is consumed in slices, each slice gives:
+cake_slice:
+  food: 2
+  saturation: 0.4
+  damage: 0

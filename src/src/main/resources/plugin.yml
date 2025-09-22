@@ -1,0 +1,18 @@
+main: me.legotijger.bfv.Main
+name: BetterFoodValues
+version: ${version}
+author: LegoTijger, MinecraftCitiesNetwork, Technofied
+api-version: 1.21
+description: A simple plugin to customize food values via YAML configuration
+website: https://github.com/MCCitiesNetwork/BetterFoodValues
+
+commands:
+  bfvreload:
+    description: Reload the food values configuration
+    permission: bfv.admin
+    usage: /bfvreload
+
+permissions:
+  bfv.admin:
+    description: Allows access to BFV admin commands
+    default: op
