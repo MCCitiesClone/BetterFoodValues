@@ -37,7 +37,7 @@ public class FoodConsumeListener implements Listener {
         materialNameCache.clear();
     }
     
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerItemConsume(PlayerItemConsumeEvent event) {
         if (event.isCancelled()) {
             return;
@@ -67,44 +67,38 @@ public class FoodConsumeListener implements Listener {
             return;
         }
         
-        // Cancel the default food behavior
-        event.setCancelled(true);
+        // Let the default consumption happen (including burp sound and item consumption)
+        // We'll modify the food/saturation values after the default behavior
         
-        // Don't consume item in creative or spectator mode
-        if (player.getGameMode() != GameMode.CREATIVE && player.getGameMode() != GameMode.SPECTATOR) {
-            // Consume one item from the stack
-            if (item.getAmount() > 1) {
-                item.setAmount(item.getAmount() - 1);
-            } else {
-                player.getInventory().setItemInMainHand(null);
+        // Schedule the food value modification for the next tick to ensure
+        // the default consumption has completed
+        plugin.getServer().getScheduler().runTask(plugin, () -> {
+            // Apply custom food values
+            double foodValue = foodConfig.getFoodValue(itemName);
+            double saturationValue = foodConfig.getSaturationValue(itemName);
+            double damageValue = foodConfig.getDamageValue(itemName);
+            
+            // Set food level (capped at 20)
+            int currentFood = player.getFoodLevel();
+            int newFood = (int) Math.min(currentFood + foodValue, 20);
+            player.setFoodLevel(newFood);
+            
+            // Set saturation level (capped at current food level)
+            float currentSaturation = player.getSaturation();
+            float newSaturation = (float) Math.min(currentSaturation + saturationValue, newFood);
+            player.setSaturation(newSaturation);
+            
+            // Apply damage if specified
+            if (damageValue > 0) {
+                player.damage(damageValue);
             }
-        }
-        
-        // Apply custom food values
-        double foodValue = foodConfig.getFoodValue(itemName);
-        double saturationValue = foodConfig.getSaturationValue(itemName);
-        double damageValue = foodConfig.getDamageValue(itemName);
-        
-        // Set food level (capped at 20)
-        int currentFood = player.getFoodLevel();
-        int newFood = (int) Math.min(currentFood + foodValue, 20);
-        player.setFoodLevel(newFood);
-        
-        // Set saturation level (capped at current food level)
-        float currentSaturation = player.getSaturation();
-        float newSaturation = (float) Math.min(currentSaturation + saturationValue, newFood);
-        player.setSaturation(newSaturation);
-        
-        // Apply damage if specified
-        if (damageValue > 0) {
-            player.damage(damageValue);
-        }
-        
-        if (plugin.getLogger().isLoggable(java.util.logging.Level.FINE)) {
-            plugin.getLogger().fine(String.format(
-                "Player %s consumed %s: +%.1f food, +%.1f saturation, %.1f damage",
-                player.getName(), itemName, foodValue, saturationValue, damageValue
-            ));
-        }
+            
+            if (plugin.getLogger().isLoggable(java.util.logging.Level.FINE)) {
+                plugin.getLogger().fine(String.format(
+                    "Player %s consumed %s: +%.1f food, +%.1f saturation, %.1f damage",
+                    player.getName(), itemName, foodValue, saturationValue, damageValue
+                ));
+            }
+        });
     }
 }
