@@ -66,12 +66,17 @@ public class FoodConsumeListener implements Listener {
         if (!foodConfig.hasCustomValues(itemName)) {
             return;
         }
+        if (Objects.requireNonNull(item.getItemMeta()).getAsComponentString().contains("nexo:id")) {
+            return;
+        }
         
         // Let the default consumption happen (including burp sound and item consumption)
         // We'll modify the food/saturation values after the default behavior
         
         // Schedule the food value modification for the next tick to ensure
         // the default consumption has completed
+        int currentFood = player.getFoodLevel();
+        float currentSaturation = player.getSaturation();
         plugin.getServer().getScheduler().runTask(plugin, () -> {
             // Apply custom food values
             double foodValue = foodConfig.getFoodValue(itemName);
@@ -79,12 +84,10 @@ public class FoodConsumeListener implements Listener {
             double damageValue = foodConfig.getDamageValue(itemName);
             
             // Set food level (capped at 20)
-            int currentFood = player.getFoodLevel();
             int newFood = (int) Math.min(currentFood + foodValue, 20);
             player.setFoodLevel(newFood);
             
             // Set saturation level (capped at current food level)
-            float currentSaturation = player.getSaturation();
             float newSaturation = (float) Math.min(currentSaturation + saturationValue, newFood);
             player.setSaturation(newSaturation);
             
