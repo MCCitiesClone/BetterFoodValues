@@ -4,21 +4,10 @@ It also allows you to add a damage value when eating a food, for instance with u
 You can make a cookie or cake deal some damage on eating.
 
 ## Downloads
-* Download jar file on [SpigotMC.org](https://www.spigotmc.org/resources/better-food-values.92020/)
-* Or on github at [releases](https://github.com/borisnliscool/BetterFoodValues/releases)
+* Download jar file from GitHub at [releases](https://github.com/MCCitiesNetwork/BetterFoodValues/releases)
 
 ## Commands:
-* /bfv help - shows a help menu for the plugin
-* /bfv reload - reloads the config files
-* /bfv permissions - shows all permissions of the plugin
-* /bfv info <food> - shows info about a given food item
-* /bfv set <food> <setting> <value> - allows you to set a value of a certain food ingame
-* /bfv get <food> <setting> - shows the value of a selected food
-* /bfv version - shows the version of the plugin and displays if it's up to date
-* /bfv author - shows the author of the plugin (me!)
+* /bfvreload - reloads the config files
 
 ## Permissions:
 * bfv.admin - main admin permission for the plugin
-
-Any suggestions are welcome, I'm already working on 2.0 which will contain a custom language file, a system to encourage a balanced diet and custom potion effects on eating food.
-Also will be working on being able to eat every item in the game. After making the thing above.
