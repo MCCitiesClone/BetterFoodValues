@@ -4,7 +4,9 @@ plugins {
 }
 
 group = 'me.legotijger'
-version = '2.0.0'
+// Version can be overridden by CI (e.g. the release workflow) via the
+// PLUGIN_VERSION environment variable; falls back to this value locally.
+version = System.getenv('PLUGIN_VERSION') ?: '2.0.0'
 description = 'BetterFoodValues - A simple plugin to customize food values via YAML configuration'
 
 // Set the base name for the JAR file
